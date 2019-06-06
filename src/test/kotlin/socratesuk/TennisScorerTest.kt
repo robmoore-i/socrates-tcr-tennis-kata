@@ -22,9 +22,10 @@ class TennisScorerTest {
 */
 }
 
-class TennisGame {
-    val player1Points: Int = 0
+data class TennisGame(
+    val player1Points: Int = 0,
     val player2Points: Int = 0
+) {
 
 //    fun player1Scores(): TennisGame {
 //        return TennisGame()
