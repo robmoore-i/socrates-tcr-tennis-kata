@@ -8,8 +8,7 @@ class TennisScorerTest {
     @Test
     fun `game is initialised with players with no points`() {
         val tennisGame = TennisGame()
-        assertThat(tennisGame.player1Points, equalTo(0))
-        assertThat(tennisGame.player2Points, equalTo(0))
+        assertThat(tennisGame, equalTo(TennisGame(player1Points = 0, player2Points = 0)))
     }
 
 /*
