@@ -1,8 +1,8 @@
 package socratesuk
 
-import junit.framework.Assert.assertTrue
 import org.hamcrest.CoreMatchers.equalTo
 import org.hamcrest.MatcherAssert.assertThat
+import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class TennisScorerTest {
