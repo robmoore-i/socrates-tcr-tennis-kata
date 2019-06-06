@@ -2,6 +2,7 @@ package socratesuk
 
 import org.hamcrest.CoreMatchers.equalTo
 import org.hamcrest.MatcherAssert.assertThat
+import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
 
@@ -63,7 +64,7 @@ class TennisScorerTest {
         val tennisGame = TennisGame(TennisPoints(40), TennisPoints(30)).player1Scores()
         assertTrue(tennisGame.player1Won)
         assertThat(tennisGame.player1Points, equalTo(TennisPoints(45)))
-        assertTrue(tennisGame.player2Won)
+        assertFalse(tennisGame.player2Won)
         assertThat(tennisGame.player2Points, equalTo(TennisPoints(30)))
     }
 
@@ -89,7 +90,7 @@ data class TennisGame(
         val player2Points: TennisPoints = TennisPoints()
 ) {
     val player1Won = true
-    val player2Won = true
+    val player2Won = player2Points.value == 45
     val deuce: Boolean = player1Points.value == 40 && player2Points.value == 40
 
     fun player1Scores(): TennisGame {
