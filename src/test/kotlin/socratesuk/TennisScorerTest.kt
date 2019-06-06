@@ -1,5 +1,6 @@
 package socratesuk
 
+import junit.framework.Assert.assertTrue
 import org.hamcrest.CoreMatchers.equalTo
 import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Test
@@ -50,6 +51,12 @@ class TennisScorerTest {
                 .player2Scores()
         assertThat(tennisGame, equalTo(TennisGame(player1Points = TennisPoints(15), player2Points = TennisPoints(15))))
     }
+
+    @Test
+    fun `if player 1 is on 40 and player 2 is on 30 then when player 2 scores there is a deuce`() {
+        val tennisGame = TennisGame(TennisPoints(40), TennisPoints(30)).player2Scores()
+        assertTrue(tennisGame.deuce)
+    }
 }
 
 data class TennisPoints(val points: Int = 0) {
@@ -68,6 +75,8 @@ data class TennisGame(
         val player1Points: TennisPoints = TennisPoints(),
         val player2Points: TennisPoints = TennisPoints()
 ) {
+    val deuce: Boolean = true
+
     fun player1Scores(): TennisGame {
         return copy(player1Points = player1Points.nextPoint())
     }
