@@ -60,14 +60,10 @@ class TennisScorerTest {
 }
 
 data class TennisPoints(val points: Int = 0) {
-    fun nextPoint(): TennisPoints {
-        if (points == 0)
-            return TennisPoints(15)
-        else if (points == 15) {
-            return TennisPoints(30)
-        } else {
-            return TennisPoints(40)
-        }
+    fun nextPoint() = when (points) {
+        0 -> TennisPoints(15)
+        15 -> TennisPoints(30)
+        else -> TennisPoints(40)
     }
 }
 
