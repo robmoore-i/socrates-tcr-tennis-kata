@@ -69,10 +69,10 @@ data class TennisGame(
         val player2Points: TennisPoints = TennisPoints()
 ) {
     fun player1Scores(): TennisGame {
-        return TennisGame(player1Points = player1Points.nextPoint(), player2Points = player2Points)
+        return copy(player1Points = player1Points.nextPoint())
     }
 
     fun player2Scores(): TennisGame {
-        return TennisGame(player1Points = player1Points, player2Points = player2Points.nextPoint())
+        return copy(player2Points = player2Points.nextPoint())
     }
 }
