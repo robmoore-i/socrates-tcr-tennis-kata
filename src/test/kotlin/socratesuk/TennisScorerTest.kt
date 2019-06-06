@@ -15,8 +15,8 @@ class TennisScorerTest {
     @Test
     fun `if player one scores, then player1 has 15 points`() {
         var tennisGame = TennisGame()
-//        tennisGame = tennisGame.player1Scores()
-        assertThat(tennisGame, equalTo(TennisGame(player1Points = 0, player2Points = 0)))
+        tennisGame = tennisGame.player1Scores()
+        assertThat(tennisGame, equalTo(TennisGame(player1Points = 15, player2Points = 0)))
     }
 
 }
@@ -25,6 +25,9 @@ data class TennisGame(
     val player1Points: Int = 0,
     val player2Points: Int = 0
 ) {
+    fun player1Scores(): TennisGame {
+        return TennisGame(15, 0)
+    }
 
 //    fun player1Scores(): TennisGame {
 //        return TennisGame()
