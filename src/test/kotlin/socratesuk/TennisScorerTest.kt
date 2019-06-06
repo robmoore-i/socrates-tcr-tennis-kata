@@ -28,8 +28,4 @@ data class TennisGame(
     fun player1Scores(): TennisGame {
         return TennisGame(player1Points = 15, player2Points = 0)
     }
-
-//    fun player1Scores(): TennisGame {
-//        return TennisGame()
-//    }
 }
