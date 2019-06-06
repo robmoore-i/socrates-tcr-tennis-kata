@@ -62,6 +62,7 @@ class TennisScorerTest {
     fun `if player 1 is on 40 and scores, then player 1 wins`() {
         val tennisGame = TennisGame(TennisPoints(40), TennisPoints(30)).player1Scores()
         assertTrue(tennisGame.player1Won)
+        assertThat(tennisGame.player1Points, equalTo(TennisPoints(45)))
     }
 }
 
@@ -69,7 +70,8 @@ data class TennisPoints(val value: Int = 0) {
     fun nextPoint() = when (value) {
         0 -> TennisPoints(15)
         15 -> TennisPoints(30)
-        else -> TennisPoints(40)
+        30 -> TennisPoints(40)
+        else -> TennisPoints(45)
     }
 }
 
