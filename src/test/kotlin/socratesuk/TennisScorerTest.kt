@@ -71,7 +71,7 @@ data class TennisGame(
         val player1Points: TennisPoints = TennisPoints(),
         val player2Points: TennisPoints = TennisPoints()
 ) {
-    val deuce: Boolean = true
+    val deuce: Boolean = player1Points.value == 40 && player2Points.value == 40
 
     fun player1Scores(): TennisGame {
         return copy(player1Points = player1Points.nextPoint())
