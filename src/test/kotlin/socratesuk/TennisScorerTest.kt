@@ -26,7 +26,7 @@ data class TennisGame(
     val player2Points: Int = 0
 ) {
     fun player1Scores(): TennisGame {
-        return TennisGame(15, 0)
+        return TennisGame(player1Points = 15, player2Points = 0)
     }
 
 //    fun player1Scores(): TennisGame {
