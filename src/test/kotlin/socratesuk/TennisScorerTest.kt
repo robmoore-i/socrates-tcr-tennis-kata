@@ -3,12 +3,13 @@ package socratesuk
 import org.hamcrest.CoreMatchers.equalTo
 import org.hamcrest.MatcherAssert.assertThat
 import org.junit.Test
+import kotlin.reflect.jvm.internal.impl.load.java.typeEnhancement.TypeEnhancementInfo
 
 class TennisScorerTest {
     @Test
     fun `game is initialised with players with no points`() {
         val tennisGame = TennisGame()
-        assertThat(tennisGame, equalTo(TennisGame(player1Points = 0, player2Points = 0)))
+        assertThat(tennisGame, equalTo(TennisGame(player1Points = TennisPoints(0), player2Points = 0)))
     }
 
 
@@ -16,7 +17,7 @@ class TennisScorerTest {
     fun `if player one scores, then player1 has 15 points`() {
         val tennisGame = TennisGame()
                 .player1Scores()
-        assertThat(tennisGame, equalTo(TennisGame(player1Points = 15, player2Points = 0)))
+        assertThat(tennisGame, equalTo(TennisGame(player1Points = TennisPoints(15), player2Points = 0)))
     }
 
     @Test
@@ -24,7 +25,7 @@ class TennisScorerTest {
         val tennisGame = TennisGame()
                 .player1Scores()
                 .player1Scores()
-        assertThat(tennisGame, equalTo(TennisGame(player1Points = 30, player2Points = 0)))
+        assertThat(tennisGame, equalTo(TennisGame(player1Points = TennisPoints(30), player2Points = 0)))
     }
 
 
@@ -34,22 +35,25 @@ class TennisScorerTest {
                 .player1Scores()
                 .player1Scores()
                 .player1Scores()
-        assertThat(tennisGame, equalTo(TennisGame(player1Points = 40, player2Points = 0)))
+        assertThat(tennisGame, equalTo(TennisGame(player1Points = TennisPoints(40), player2Points = 0)))
     }
 
 
 
 }
 
+data class TennisPoints(val points: Int = 0){
+}
+
 data class TennisGame(
-    val player1Points: Int = 0,
+    val player1Points: TennisPoints = TennisPoints(),
     val player2Points: Int = 0
 ) {
     fun player1Scores(): TennisGame {
-        if (player1Points == 30) {
-            return TennisGame(player1Points = 40, player2Points = 0)
+        if (player1Points.points == 30) {
+            return TennisGame(player1Points = TennisPoints(40), player2Points = 0)
         }
 
-        return TennisGame(player1Points = player1Points + 15, player2Points = 0)
+        return TennisGame(player1Points = TennisPoints(player1Points.points + 15), player2Points = 0)
     }
 }
