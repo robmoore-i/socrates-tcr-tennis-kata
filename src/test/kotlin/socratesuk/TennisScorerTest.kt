@@ -63,6 +63,6 @@ data class TennisGame(
             return TennisGame(player1Points = TennisPoints(40), player2Points = TennisPoints(0))
         }
 
-        return TennisGame(player1Points = TennisPoints(player1Points.points + 15), player2Points = TennisPoints(0))
+        return TennisGame(player1Points = player1Points.nextPoint(), player2Points = TennisPoints(0))
     }
 }
