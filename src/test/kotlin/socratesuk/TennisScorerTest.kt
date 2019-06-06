@@ -8,7 +8,8 @@ class TennisScorerTest {
     @Test
     fun gameIsInitialisedWithNoPointsEitherSide() {
         val tennisGame = TennisGame()
-        assertThat(tennisGame.player1Points, equalTo(0));
+        
+        assertThat(tennisGame.player1Points, equalTo(0))
     }
 }
 
