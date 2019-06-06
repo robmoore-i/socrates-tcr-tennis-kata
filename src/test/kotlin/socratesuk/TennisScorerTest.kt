@@ -59,10 +59,6 @@ data class TennisGame(
     val player2Points:  TennisPoints = TennisPoints()
 ) {
     fun player1Scores(): TennisGame {
-        if (player1Points.points == 30) {
-            return TennisGame(player1Points = TennisPoints(40), player2Points = TennisPoints(0))
-        }
-
         return TennisGame(player1Points = player1Points.nextPoint(), player2Points = TennisPoints(0))
     }
 }
