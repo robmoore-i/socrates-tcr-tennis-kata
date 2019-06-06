@@ -63,6 +63,8 @@ class TennisScorerTest {
         val tennisGame = TennisGame(TennisPoints(40), TennisPoints(30)).player1Scores()
         assertTrue(tennisGame.player1Won)
         assertThat(tennisGame.player1Points, equalTo(TennisPoints(45)))
+        assertTrue(tennisGame.player2Won)
+        assertThat(tennisGame.player2Points, equalTo(TennisPoints(30)))
     }
 
     @Test
