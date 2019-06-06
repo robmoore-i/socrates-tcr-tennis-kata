@@ -64,6 +64,13 @@ class TennisScorerTest {
         assertTrue(tennisGame.player1Won)
         assertThat(tennisGame.player1Points, equalTo(TennisPoints(45)))
     }
+
+    @Test
+    fun `if player 2 is on 40 and scores, then player 2 wins`() {
+        val tennisGame = TennisGame(TennisPoints(30), TennisPoints(40)).player2Scores()
+        assertTrue(tennisGame.player2Won)
+        assertThat(tennisGame.player2Points, equalTo(TennisPoints(45)))
+    }
 }
 
 data class TennisPoints(val value: Int = 0) {
@@ -80,6 +87,7 @@ data class TennisGame(
         val player2Points: TennisPoints = TennisPoints()
 ) {
     val player1Won = true
+    val player2Won = true
     val deuce: Boolean = player1Points.value == 40 && player2Points.value == 40
 
     fun player1Scores(): TennisGame {
